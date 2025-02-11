@@ -1,0 +1,245 @@
+body {
+    font-family: 'Open Sans', sans-serif; /* Use Open Sans */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f8ff; /* Very light blue background */
+}
+
+#chat-container {
+    width: 90%;  /* Wider on mobile */
+    max-width: 500px; /* Narrower max-width */
+    border: none; /* Remove border */
+    border-radius: 25px; /* More rounded corners */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+    overflow: hidden;
+    display: flex;           /* Turn chat-container into a flex container */
+    flex-direction: column;  /* Stack children vertically */
+    height: 90vh;       /*  Set a fixed height for the container  */
+}
+
+/*style the header*/
+#chat-header {
+    background-color: #007bff; /* Use the primary blue color */
+    color: white;
+    padding: 10px 15px;
+    border-top-left-radius: 25px;  /* Match container rounding */
+    border-top-right-radius: 25px;
+    display: flex;         /* Use flexbox for layout */
+    align-items: center;   /* Vertically center items */
+    justify-content: space-between; /* Space out avatar, name, and options */
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+#bot-avatar {
+    width: 40px;       /* Slightly larger avatar */
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;  /* Circular avatar */
+}
+
+#chat-header span {
+    flex-grow: 1;
+    font-family: 'Bangers', cursive;  /* Use Bangers for the title */
+    font-size: 1.5rem;       /* Adjust as needed for size */
+    color: black;            /* Set color to black */
+    font-weight: normal;     /* If Algerian has a bold variant, you might need to set this to normal */
+}
+
+.options {
+    display: flex;      /* Make options a flex container */
+    gap: 10px;         /* Add some space between options (if you add more) */
+}
+
+/* Style for the option icon (adjust as needed) */
+.option-icon {
+    cursor: pointer;
+    /* Add more styling for icons if needed */
+}
+
+#chat-history {
+    flex-grow: 1;          /* Make chat history take up available space*/
+    overflow-y: auto;     /* Scrollable if content overflows */
+    padding: 15px;        /* Slightly more padding */
+    display: flex;
+    flex-direction: column; /* Stack messages vertically */
+}
+
+#input-area {
+    display: flex;          /* Use flexbox for input area */
+    border-top: 1px solid #ddd; /* Lighter border */
+    padding: 10px;
+    align-items: center;    /* Center items vertically */
+	 position: sticky;
+	 bottom: 0;
+	 background-color: white;
+}
+
+#user-input {
+    flex-grow: 1;          /* Input field takes up remaining space */
+    padding: 12px 15px;     /* More padding */
+    border: 1px solid #ddd;
+    border-radius: 20px;   /* Rounded input field */
+    margin-right: 10px;    /* Space between input and button */
+    font-size: 16px;
+    outline: none;          /* Remove the default focus outline */
+}
+#user-input:focus {
+    border-color: #007bff; /* Blue border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow */
+}
+
+#send-button {
+    padding: 0;          /* Remove default padding */
+    border: none;
+    background-color: #007bff; /* Primary blue */
+    border-radius: 50%;  /* Circular button */
+    width: 40px;         /* Fixed width */
+    height: 40px;        /* Fixed height */
+    display: flex;       /* Center the icon */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+	 transition: background-color 0.2s ease; /* Smooth transition for hover effect */
+}
+
+/* Style the SVG icon inside the button (optional, for more control) */
+#send-button svg {
+    width: 20px; /* Adjust icon size as needed */
+    height: 20px;
+}
+
+#send-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* User Message Styling */
+.user-message {
+    align-self: flex-end;  /* Align to the right */
+    margin-bottom: 10px;
+	 display: flex;          /* Make it a flex container */
+    flex-direction: row-reverse; /* Reverse the order so avatar is on the right */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.user-message p {
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px 20px 5px 20px; /* Rounded corners, tail on left */
+    padding: 10px 15px;
+    display: inline-block;
+    max-width: 70%;
+    word-wrap: break-word;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Subtle shadow */
+	 margin: 0;
+}
+
+/* Bot Message Styling */
+.bot-message {
+    align-self: flex-start; /* Align to the left */
+    margin-bottom: 10px;
+	 display: flex;  /* Use flexbox for layout */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.bot-message p {
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 20px 20px 20px 5px; /* Rounded corners, tail on right */
+    padding: 10px 15px;
+    display: inline-block;
+    max-width: 70%;
+    word-wrap: break-word;
+	 box-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Subtle shadow */
+	 margin: 0;
+}
+
+/* Styling for quick replies */
+.quick-replies {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 10px;       /* Space between buttons */
+    margin-top: 5px; /* Space after bot message */
+	 margin-left: 40px; /*  Align with bot messages, adjust as needed */
+}
+
+.quick-replies button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+	 transition: background-color 0.2s ease;
+}
+
+.quick-replies button:hover {
+    background-color: #0056b3;
+}
+.bot-avatar-container {
+    margin-right: 10px; /* Add some space between avatar and message */
+}
+
+.bot-avatar {
+    width: 40px; /* Adjust as needed */
+    height: 40px;
+    border-radius: 50%;  /* Make it circular */
+    vertical-align: middle; /* Ensure proper vertical alignment */
+}
+.user-avatar-container {
+	margin-left: 10px;
+}
+.user-avatar {
+    width: 40px; /* Adjust as needed */
+    height: 40px;
+    border-radius: 50%;  /* Make it circular */
+    vertical-align: middle; /* Ensure proper vertical alignment */
+}
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  margin-left: 40px; /* Keep consistent with bot message alignment */
+  margin-bottom: 10px;
+
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #6c757d; /* Use secondary color */
+  margin: 0 2px;
+  display: inline-block;
+  animation: bounce 1.2s infinite;
+}
+
+/* Animation for the typing indicator */
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Delay for each dot */
+.typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+.typing-indicator span:nth-child(3) {
+ animation-delay: 0s;
+}

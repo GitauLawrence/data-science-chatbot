@@ -1,0 +1,38 @@
+# Ignore virtual environment
+.venv/
+venv/
+env/
+
+# Ignore Rasa cache
+.rasa/
+
+# Ignore Rasa models
+models/
+
+# Ignore generated embeddings and index
+question_embeddings.npy
+context_embeddings.npy
+context_to_index.json
+question_to_index.json
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore logs (optional, but good practice)
+*.log
+
+# Ignore any credentials or sensitive information
+credentials.yml  # If you have sensitive data in here
+endpoints.yml   # IF you have custom endpoints with secrets
+
+# Ignore any IDE-specific files/directories
+.idea/
+.vscode/
+
+# Ignore any other large data files you don't need on GitHub
+# Add any large CSV/JSON/etc files here if they aren't essential
+# data/large_dataset.csv
+
+# Ignore frontend node_modules if you add a framework later
+# frontend/node_modules/

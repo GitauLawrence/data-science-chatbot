@@ -1,0 +1,473 @@
+version: "3.1"
+
+stories:
+  - story: Greet and ask definition
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_definition
+        entities:
+        - topic: "linear regression"
+      - action: action_answer_question
+
+  - story: Greet formally and ask definition
+    steps:
+      - intent: greet_formal
+      - action: utter_greet
+      - intent: ask_definition
+        entities:
+        - topic: "logistic regression"
+      - action: action_answer_question
+
+  - story: Greet casually and ask definition
+    steps:
+      - intent: greet_casual
+      - action: utter_greet
+      - intent: ask_definition
+        entities:
+        - topic: "decision trees"
+      - action: action_answer_question
+
+  - story: Greet and ask comparison
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_comparison
+        entities:
+        - topic: "supervised"
+        - topic: "unsupervised"
+      - action: action_answer_question
+
+  - story: Greet and ask explanation
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_explanation
+        entities:
+        - topic: "k-means clustering"
+      - action: action_answer_question
+
+  - story: Greet and ask application
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_application
+        entities:
+        - topic: "machine learning"
+      - action: action_answer_question
+
+  - story: Greet and ask how-to
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_how_to
+        entities:
+        - topic: "cross-validation"
+      - action: action_answer_question
+
+  - story: Greet and ask why
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_why
+        entities:
+        - topic: "feature scaling"
+      - action: action_answer_question
+
+  - story: Greet and ask best practices
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_best_practices
+        entities:
+        - topic: "data preprocessing"
+      - action: action_answer_question
+
+  - story: Greet and ask advantages/disadvantages
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_advantages_disadvantages
+        entities:
+        - topic: "deep learning"
+      - action: action_answer_question
+
+  - story: Definition, then follow-up with explanation
+    steps:
+        - intent: ask_definition
+          entities:
+          - topic: "neural networks"
+        - action: action_answer_question
+        - intent: ask_explanation
+          entities:
+          - topic: "neural networks"
+        - action: action_answer_question
+
+  - story: Comparison, then follow-up with definition
+    steps:
+      - intent: ask_comparison
+        entities:
+        - topic: "precision"
+        - topic: "recall"
+      - action: action_answer_question
+      - intent: ask_definition
+        entities:
+        - topic: "precision"
+      - action: action_answer_question
+
+  - story: Explanation, then follow-up with how-to
+    steps:
+      - intent: ask_explanation
+        entities:
+        - topic: "gradient descent"
+      - action: action_answer_question
+      - intent: ask_how_to
+        entities:
+        - topic: "gradient descent"
+      - action: action_answer_question
+
+  - story: Application, then follow-up with why
+    steps:
+      - intent: ask_application
+        entities:
+        - topic: "machine learning"
+      - action: action_answer_question
+      - intent: ask_why  # More general "why" follow-up
+        entities:
+        - topic: "machine learning"
+      - action: action_answer_question
+
+  - story: Best practices, then follow-up with advantages/disadvantages
+    steps:
+      - intent: ask_best_practices
+        entities:
+        - topic: "model evaluation"
+      - action: action_answer_question
+      - intent: ask_advantages_disadvantages
+        entities:
+        - topic: "cross-validation"
+      - action: action_answer_question
+
+  - story: Multiple questions about different topics
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_definition
+      entities:
+      - topic: "overfitting"
+    - action: action_answer_question
+    - intent: ask_comparison
+      entities:
+      - topic: "L1 regularization"
+      - topic: "L2 regularization"
+    - action: action_answer_question
+    - intent: ask_explanation
+      entities:
+      - topic: "backpropagation"
+    - action: action_answer_question
+
+  - story: User asks a question, chatbot answers, user says thanks, chatbot says goodbye
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_question
+      entities:
+      - topic: "pca"
+    - action: action_answer_question
+    - intent: affirm
+    - action: utter_happy # Respond to affirmation
+    - intent: goodbye    # User ends the conversation
+    - action: utter_goodbye
+
+  - story: User asks a series of related questions
+    steps:
+    - intent: ask_definition
+      entities:
+      - topic: "deep learning"
+    - action: action_answer_question
+    - intent: ask_explanation
+      entities:
+      - topic: "neural networks"
+    - action: action_answer_question
+    - intent: ask_application
+      entities:
+      - topic: "deep learning"
+    - action: action_answer_question
+    - intent: ask_advantages_disadvantages
+      entities:
+      - topic: "deep learning"
+    - action: action_answer_question
+
+  - story: User asks about model evaluation, then gets more specific
+    steps:
+    - intent: ask_about_model_evaluation
+    - action: action_answer_question
+    - intent: ask_definition
+      entities:
+      - topic: "confusion matrix"
+    - action: action_answer_question
+    - intent: ask_explanation
+      entities:
+      - topic: "ROC curves"
+    - action: action_answer_question
+
+  - story: User asks about different algorithms
+    steps:
+    - intent: ask_about_algorithm
+      entities:
+      - topic: "linear regression"
+    - action: action_answer_question
+    - intent: ask_about_algorithm
+      entities:
+      - topic: "decision trees"
+    - action: action_answer_question
+    - intent: ask_about_algorithm
+      entities:
+      - topic: "random forests"
+    - action: action_answer_question
+
+  - story: User asks about statistical concepts
+    steps:
+    - intent: ask_about_statistical_concepts
+      entities:
+      - topic: "p-value"
+    - action: action_answer_question
+    - intent: ask_explanation
+      entities:
+      - topic: "hypothesis testing"
+    - action: action_answer_question
+    - intent: ask_definition
+      entities:
+      - topic: "confidence intervals"
+    - action: action_answer_question
+
+  - story: User asks about NLP, then about specific techniques
+    steps:
+    - intent: ask_about_nlp
+    - action: action_answer_question
+    - intent: ask_explanation
+      entities:
+      - topic: "tokenization"
+    - action: action_answer_question
+    - intent: ask_definition
+      entities:
+      - topic: "word embeddings"
+    - action: action_answer_question
+
+  - story: User asks about time series analysis
+    steps:
+    - intent: ask_about_time_series_analysis
+    - action: action_answer_question
+    - intent: ask_explanation
+      entities:
+      - topic: "ARIMA"
+    - action: action_answer_question
+    - intent: ask_how_to
+      entities:
+      - topic: "exponential smoothing"
+    - action: action_answer_question
+
+  - story: User asks a question, then denies understanding
+    steps:
+    - intent: ask_question
+      entities:
+      - topic: "PCA"
+    - action: action_answer_question
+    - intent: deny
+    - action: utter_default
+
+  - story: User asks a question, then affirms understanding
+    steps:
+    - intent: ask_question
+      entities:
+      - topic: "logistic regression"
+    - action: action_answer_question
+    - intent: affirm
+    - action: utter_happy
+
+  - story: User asks about feature engineering
+    steps:
+    - intent: ask_about_feature_engineering
+    - action: action_answer_question
+    - intent: ask_how_to
+      entities:
+        - topic: "feature scaling"
+    - action: action_answer_question
+    - intent: ask_why
+      entities:
+        - topic: "feature selection"
+    - action: action_answer_question
+
+  - story: User asks about unsupervised learning
+    steps:
+    - intent: ask_about_unsupervised_learning
+    - action: action_answer_question
+    - intent: ask_definition
+      entities:
+        - topic: "clustering"
+    - action: action_answer_question
+    - intent: ask_explanation
+      entities:
+        - topic: "k-means clustering"
+    - action: action_answer_question
+
+  - story: User greets and asks about big data
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_about_big_data_technologies
+      - action: action_answer_question
+
+  - story: User asks for cloud computing info
+    steps:
+      - intent: ask_about_cloud_computing_in_ml
+      - action: action_answer_question
+
+  - story: User expresses good mood and asks a question
+    steps:
+      - intent: mood_great
+      - action: utter_happy  # Acknowledge the mood
+      - intent: ask_definition
+        entities:
+        - topic: "Bayesian methods"
+      - action: action_answer_question
+
+  - story: User expresses bad mood, chatbot offers help, user asks question
+    steps:
+      - intent: mood_unhappy
+      - action: utter_cheer_up # Offer cheer up message/image.
+      - intent: ask_explanation
+        entities:
+        - topic: "reinforcement learning"
+      - action: action_answer_question
+
+  - story: User asks about visualization, then specifics
+    steps:
+      - intent: ask_about_data_visualization
+      - action: action_answer_question
+      - intent: ask_how_to
+        entities:
+        - topic: "histograms"
+      - action: action_answer_question
+      - intent: ask_definition  # Follow up with a definition request
+        entities:
+        - topic: "scatter plots"
+      - action: action_answer_question
+
+  - story: Follow up with "show_context"
+    steps:
+    - intent: ask_explanation
+      entities:
+        - topic: "dropout"
+    - action: action_answer_question
+    - intent: show_context
+    - action: action_provide_context
+
+  - story: Affirmation after context provided
+    steps:
+    - intent: ask_question
+      entities:
+        - topic: "regularization"
+    - action: action_answer_question
+    - intent: show_context
+    - action: action_provide_context
+    - intent: affirm  # User affirms after seeing context
+    - action: utter_happy
+
+  - story: Denial after context (rephrase)
+    steps:
+    - intent: ask_about_algorithm
+      entities:
+          - topic: "SVM"
+    - action: action_answer_question
+    - intent: show_context
+    - action: action_provide_context
+    - intent: deny       # User denies understanding
+    - action: utter_default # Ask for rephrasing
+    - intent: ask_explanation  # User rephrases (or asks a related question)
+      entities:
+          - topic: "hyperplane"
+    - action: action_answer_question
+
+  - story: Goodbye after affirmation
+    steps:
+    - intent: ask_best_practices
+      entities:
+          - topic: "data preprocessing"
+    - action: action_answer_question
+    - intent: affirm
+    - action: utter_happy
+    - intent: goodbye        # User ends the conversation
+    - action: utter_goodbye
+
+  - story: Ask definition with context request
+    steps:
+      - intent: ask_definition
+        entities:
+        - topic: "gradient descent"
+      - action: action_answer_question
+      - intent: show_context  # Directly asks for context
+      - action: action_provide_context
+
+  - story: Ask multiple algorithm questions
+    steps:
+    - intent: ask_about_algorithm
+      entities:
+      - topic: "linear regression"
+    - action: action_answer_question
+    - intent: ask_about_algorithm
+      entities:
+      - topic: "logistic regression"
+    - action: action_answer_question
+
+  - story: Greet and ask multiple questions
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_definition
+      entities:
+        - topic: "deep learning"
+    - action: action_answer_question
+    - intent: ask_explanation
+      entities:
+        - topic: "neural networks"
+    - action: action_answer_question
+
+  - story: Ask about applications in a sequence
+    steps:
+    - intent: ask_about_machine_learning_applications
+    - action: action_answer_question
+    - intent: ask_application  # More specific application question
+      entities:
+      - topic: "healthcare"
+    - action: action_answer_question
+
+  - story:  Casual greeting and definition
+    steps:
+      - intent: greet_casual
+      - action: utter_greet
+      - intent: ask_definition
+        entities:
+        - topic: "feature scaling"
+      - action: action_answer_question
+
+  - story: Formal greeting and explanation
+    steps:
+      - intent: greet_formal
+      - action: utter_greet
+      - intent: ask_explanation
+        entities:
+        - topic: "cross-validation"
+      - action: action_answer_question
+
+  - story:  Ask for comparison, then more details
+    steps:
+      - intent: ask_comparison
+        entities:
+          - topic: "precision"
+          - topic: "recall"
+      - action: action_answer_question
+      - intent: ask_explanation  # Asks for more explanation on the same topic
+        entities:
+          - topic: "precision"
+      - action: action_answer_question

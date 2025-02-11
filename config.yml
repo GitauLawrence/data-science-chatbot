@@ -1,0 +1,41 @@
+language: en
+
+pipeline:
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+  token_pattern: (?u)\b\w+\b    # Captures single words as tokens
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 2    # Considers character sequences from 2 to 5 characters long
+  max_ngram: 5
+- name: DIETClassifier
+  epochs: 200    # Increased for better training
+  constrain_similarities: true
+  model_confidence: softmax    # Use softmax for confidence normalization
+- name: EntitySynonymMapper
+- name: ResponseSelector
+  epochs: 200    # Increased for better response selection
+  constrain_similarities: true
+  model_confidence: softmax    # Use softmax for confidence normalization
+- name: FallbackClassifier
+  threshold: 0.7    # Higher threshold for triggering the fallback action
+  ambiguity_threshold: 0.2    # Threshold for ambiguity handling
+
+policies:
+- name: MemoizationPolicy
+  max_history: 10    # Increased to consider a slightly longer conversation history
+- name: RulePolicy
+  core_fallback_threshold: 0.4    # Lower threshold for triggering the fallback action
+  core_fallback_action_name: "action_default_fallback"    # Your fallback action
+  enable_fallback_prediction: true
+- name: UnexpecTEDIntentPolicy
+  max_history: 5
+  epochs: 100
+- name: TEDPolicy
+  max_history: 10    # Increased to consider a longer conversation history
+  epochs: 300    # More epochs for potentially better learning of complex patterns
+  constrain_similarities: true
+  model_confidence: softmax    # Use softmax for confidence normalization
+assistant_id: 20250203-144421-cream-grain

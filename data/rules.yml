@@ -1,0 +1,174 @@
+version: "3.1"
+
+rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+  - rule: Respond to bot challenge
+    steps:
+    - intent: bot_challenge
+    - action: utter_iamabot
+
+  - rule: Greet the user (general)
+    steps:
+    - intent: greet
+    - action: utter_greet
+
+  - rule: Greet formally
+    steps:
+    - intent: greet_formal
+    - action: utter_greet
+
+  - rule: Greet casually
+    steps:
+    - intent: greet_casual
+    - action: utter_greet
+
+  - rule: Handle affirmations
+    steps:
+    - intent: affirm
+    - action: utter_happy
+
+  - rule: Handle denials
+    steps:
+    - intent: deny
+    - action: utter_default
+
+  - rule: Handle good mood
+    steps:
+    - intent: mood_great
+    - action: utter_happy
+
+  - rule: Handle bad mood
+    steps:
+    - intent: mood_unhappy
+    - action: utter_cheer_up  # Or another appropriate response
+
+  - rule: Provide context when asked
+    steps:
+    - intent: show_context
+    - action: action_provide_context
+
+  # --- Rules for triggering the custom action ---
+
+  - rule: Activate custom action for ask_definition
+    steps:
+    - intent: ask_definition
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_comparison
+    steps:
+    - intent: ask_comparison
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_explanation
+    steps:
+    - intent: ask_explanation
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_application
+    steps:
+    - intent: ask_application
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_how_to
+    steps:
+    - intent: ask_how_to
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_why
+    steps:
+    - intent: ask_why
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_best_practices
+    steps:
+    - intent: ask_best_practices
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_advantages_disadvantages
+    steps:
+    - intent: ask_advantages_disadvantages
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_algorithm
+    steps:
+    - intent: ask_about_algorithm
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_deep_learning
+    steps:
+    - intent: ask_about_deep_learning
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_model_evaluation
+    steps:
+    - intent: ask_about_model_evaluation
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_statistical_concepts
+    steps:
+    - intent: ask_about_statistical_concepts
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_machine_learning_applications
+    steps:
+    - intent: ask_about_machine_learning_applications
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_data_visualization
+    steps:
+    - intent: ask_about_data_visualization
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_feature_engineering
+    steps:
+    - intent: ask_about_feature_engineering
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_unsupervised_learning
+    steps:
+    - intent: ask_about_unsupervised_learning
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_reinforcement_learning
+    steps:
+    - intent: ask_about_reinforcement_learning
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_nlp
+    steps:
+    - intent: ask_about_nlp
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_time_series_analysis
+    steps:
+    - intent: ask_about_time_series_analysis
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_bayesian_methods
+    steps:
+    - intent: ask_about_bayesian_methods
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_big_data_technologies
+    steps:
+    - intent: ask_about_big_data_technologies
+    - action: action_answer_question
+
+  - rule: Activate custom action for ask_about_cloud_computing_in_ml
+    steps:
+    - intent: ask_about_cloud_computing_in_ml
+    - action: action_answer_question
+
+  - rule: Activate custom action for general questions
+    steps:
+    - intent: ask_question
+    - action: action_answer_question
+
+  - rule: Handle NLU Fallback  # Handles cases where the intent is not recognized
+    steps:
+    - intent: nlu_fallback
+    - action: utter_default

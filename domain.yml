@@ -1,0 +1,173 @@
+version: "3.1"
+
+intents:
+  - greet
+  - greet_formal  
+  - greet_casual
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - ask_definition
+  - ask_comparison
+  - ask_explanation
+  - ask_application
+  - ask_how_to
+  - ask_why
+  - ask_best_practices
+  - ask_advantages_disadvantages
+  - ask_about_algorithm
+  - ask_about_deep_learning
+  - ask_about_model_evaluation
+  - ask_about_statistical_concepts
+  - ask_about_machine_learning_applications
+  - ask_about_data_visualization
+  - ask_about_feature_engineering
+  - ask_about_unsupervised_learning
+  - ask_about_reinforcement_learning
+  - ask_about_nlp
+  - ask_about_time_series_analysis
+  - ask_about_bayesian_methods
+  - ask_about_big_data_technologies
+  - ask_about_cloud_computing_in_ml
+  - ask_question
+  - show_context
+  - ask_about_tools  
+  - ask_about_math   
+  - ask_about_applications 
+
+entities:
+  - topic
+
+slots:
+  topic:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: topic
+  context:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+actions:
+  - action_answer_question
+  - action_default_fallback
+  - action_provide_context
+
+responses:
+  utter_greet:
+    - text: "Hey there! How can I help you with data science and machine learning?"
+    - text: "Hi! I'm ready to answer your data science questions."
+    - text: "Hello! What can I help you with today?"
+    - text: "Greetings! Ask me anything about data science and ML."
+    - text: "Good day! I'm here to assist with your data science inquiries."
+    - text: "Hi there, ready for your data science and machine learning questions!"
+    - text: "Welcome! What data science topic are you interested in?"
+    - text: "Hello, I'm your data science assistant. What can I do for you?"
+
+  utter_goodbye:
+    - text: "Goodbye! Have a great day!"
+    - text: "Farewell! Feel free to reach out if you have more questions."
+    - text: "See you later! I hope I was helpful."
+    - text: "Bye! Come back anytime you need assistance."
+    - text: "Have a productive day! Goodbye."
+    - text: "It was a pleasure assisting you. Goodbye!"
+    - text: "Thanks for chatting! Goodbye for now."
+    - text: "So long, and thanks for all the questions!"
+
+  utter_happy:
+    - text: "Great! I'm glad I could help."
+    - text: "Awesome! Happy to be of assistance."
+    - text: "Wonderful! Is there anything else I can help with?"
+    - text: "Excellent! Glad to hear that."
+    - text: "Fantastic! I'm here if you need more help."
+    - text: "Perfect!  Let me know if you have other questions."
+    - text: "Super! My pleasure to be of service."
+    - text: "I'm pleased to hear that! Anything else?"
+
+  utter_sad:
+    - text: "I'm sorry to hear that."
+    - text: "Oh no, I'm sorry. Is there anything I can do to help?"
+    - text: "I'm sorry that didn't work out.  Can I clarify anything?"
+    - text: "That's unfortunate.  Let me know if I can assist further."
+    - text: "I'm sorry you're experiencing that. How can I make it better?"
+    - text: "My apologies. Please let me know how I can improve."
+    - text: "I understand.  I'll try my best to do better next time."
+    - text: "I'm here to help, even if things aren't going perfectly."
+
+  utter_default:
+    - text: "I'm not sure I understand. Could you rephrase your question?"
+    - text: "I didn't quite catch that. Can you ask in a different way?"
+    - text: "Could you please rephrase your question? I'm having trouble understanding."
+    - text: "I'm sorry, I don't have the information you're looking for.  Could you try asking differently?"
+    - text: "My apologies, I'm still learning.  Can you try a simpler question?"
+    - text: "Hmm, I'm not trained on that yet.  Could you try asking about a different topic?"
+    - text: "Let's try that again.  Could you phrase your question differently?"
+    - text: "I'm afraid I don't know the answer to that. Can you ask in another way?"
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Feeling down?  Here's a little something to brighten your day:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Let's try to lift your spirits with this:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Don't worry, be happy!  Here's a picture to make you smile:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "I hope this makes you feel a bit better:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Take a break and enjoy this:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Here's a distraction from your troubles:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Maybe this will help:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+    - text: "Was that information useful?"
+    - text: "Did that answer your question?"
+    - text: "I hope that was helpful.  Anything else?"
+    - text: "Was that what you were looking for?"
+    - text: "Did I provide a satisfactory answer?"
+    - text: "Do you have any further questions on that topic?"
+    - text: "Is there anything else you'd like to know?"
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+    - text: "I'm a virtual assistant created using Rasa."
+    - text: "I'm an AI chatbot running on the Rasa framework."
+    - text: "You're talking to a bot built with Rasa."
+    - text: "I'm a Rasa-powered conversational AI."
+    - text: "I'm not a human, I'm a Rasa bot."
+    - text: "My brain is made of Rasa code!"
+    - text: "You've reached a Rasa-powered chatbot."
+
+  utter_affirm:
+    - text: "Yes, that's correct."
+    - text: "Yes, you're right."
+    - text: "Exactly!"
+    - text: "That's right."
+    - text: "Yes, that's it."
+    - text: "Affirmative."
+    - text: "You got it."
+    - text: "Correct."
+
+  utter_deny:
+    - text: "No, that's not what I meant."
+    - text: "No, that's incorrect."
+    - text: "Nope, try again."
+    - text: "That's not right."
+    - text: "No, that's not it."
+    - text: "Negative."
+    - text: "I'm afraid that's not correct."
+    - text: "That's not quite what I was looking for."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
